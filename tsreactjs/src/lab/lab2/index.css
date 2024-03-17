@@ -1,24 +1,56 @@
+.boxcontainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
 .containerLab1 {
     margin-top: 15px;
 }
 .imgpokemon {
     padding: 15px;
     margin: 10px;
-    height: 120px;
     cursor: pointer;
-    width: 120px;
-    border: 1px solid black;
+    text-align: center;
+    border-radius: 15px;
 }
 .formlab1 {
+    text-align: center;
     margin-left: 30px;
-    width: 500px;
+}
+.boxinput {
+    position: relative;
+}
+#nameuser {
+    left: 42%;
+    position: absolute;
+    width: 250px;
+}
+.invalid-feedback {
+    top: 40px;
+    /* left: 42%; */
+    position: absolute;
+    width: 250px;
 }
 .black {
     background-color: black;
 }
+
 .btnhandleBox {
-    margin-top: 15px;
+    padding-top: 20px;
+    margin-top: 45px;
 }
 .btnhandleBox > Button {
     margin: 0 5px;
+}
+.box {
+    position: relative;
+}
+.id {
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: underline;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

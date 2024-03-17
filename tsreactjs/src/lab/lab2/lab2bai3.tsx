@@ -1,11 +1,12 @@
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+
+import { useSelector } from "react-redux";
+
 import Col from "react-bootstrap/Col";
 import "./index.css";
 import Lab1Form from "../lab1/form";
-
 interface ApiResponse {
     // tạo lớp
     name: string;
@@ -16,7 +17,7 @@ function Lab2Bai3() {
     const [html, setHtml] = useState<JSX.Element[]>([]); // html được mong đợi là một mảng các phần tử JSX.Element
     const [isHighlighted, setIsHighlighted] = useState("");
     // hoán đổi vị trí arr
-    function shuffle(array: any) {
+    const shuffle = (array: any) => {
         // Lặp qua từng phần tử của mảng
         for (let i = array.length - 1; i > 0; i--) {
             // Chọn một vị trí ngẫu nhiên trong mảng
@@ -25,9 +26,9 @@ function Lab2Bai3() {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
-    }
+    };
 
-    const active = `imgpokemon shadow mb-3  ${isHighlighted ? "black" : ""}`;
+    const active = `imgpokemon shadow mb-3 box  ${isHighlighted ? "black" : ""}`;
     useEffect(() => {
         if (data?.results) {
             const fetchData = async () => {
@@ -36,28 +37,30 @@ function Lab2Bai3() {
                     async (item: ApiResponse, index: number) => {
                         const res = await fetch(item.url);
                         const responseData = await res.json();
+                        const clickthe = (e: any) => {
+                            // để chuyển đổi kiểu của e.target sang HTMLImageElement
+                            // sài trong TS mới ăn
 
+                            const target = e.currentTarget as HTMLElement;
+                            e.stopPropagation();
+                            if (target.classList.contains("black")) {
+                                target.classList.remove("black");
+                            } else {
+                                target.classList.add("black");
+                            }
+                        };
                         return (
-                            <Col key={index}>
+                            <div
+                                key={index}
+                                className={active}
+                                onClick={clickthe}
+                            >
+                                <p className="id">{responseData.id} </p>
                                 <img
-                                    onClick={(e) => {
-                                        // để chuyển đổi kiểu của e.target sang HTMLImageElement
-                                        // sài trong TS mới ăn
-                                        const target =
-                                            e.target as HTMLImageElement;
-                                        if (
-                                            target.classList.contains("black")
-                                        ) {
-                                            target.classList.remove("black");
-                                        } else {
-                                            target.classList.add("black");
-                                        }
-                                    }}
                                     alt=""
-                                    className={active}
                                     src={responseData.sprites.front_default}
                                 />
-                            </Col>
+                            </div>
                         );
                     },
                 );
@@ -70,15 +73,21 @@ function Lab2Bai3() {
         }
     }, [data]);
 
+    const startGame = useSelector((state: any) => {
+        return state.startGame;
+    });
+
     return (
         <>
             <Lab1Form />
-            <Container className="containerLab1">
-                <Row>
-                    {html}
-                    <Col></Col>
-                </Row>
-            </Container>
+            {startGame && (
+                <Container className="containerLab1">
+                    <div className="boxcontainer">
+                        {html}
+                        <Col></Col>
+                    </div>
+                </Container>
+            )}
         </>
     );
 }
