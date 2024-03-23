@@ -8,13 +8,22 @@ import Lab2Bai3 from "./lab/lab2/lab2bai3";
 import Lab3 from "./lab/lab3/lab3";
 import Lab3Bai3 from "./lab/lab3/lab3bai3";
 import IT from "./lesson/index";
+import lab4 from "./lab/lab4/lab4";
+import Lab4bai4 from "./lab/lab4/lab4bai4";
 import "./App.css";
+
 // lab 1 Loiktpc 05314
 
 // lab 2 loiktpc 05314
 function App() {
+    // lab4 :
+    lab4();
+
+    // let fpt = new IT("kim", 12, "kim");
+    // console.log(fpt);
+
     // lab 3:
-    Lab3();
+    // Lab3();
 
     // Lab2Bai3();
 
@@ -31,7 +40,8 @@ function App() {
             </header>
             {/* <Lab1_4  /> */}
             {/* <Lab2Bai3  /> */}
-            <Lab3Bai3 />
+            {/* <Lab3Bai3 /> */}
+            <Lab4bai4 />
         </div>
     );
 }
