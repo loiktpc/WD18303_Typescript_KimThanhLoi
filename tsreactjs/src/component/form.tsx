@@ -1,7 +1,7 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
-import { startPlay, cancelPlay } from "../../redux/actions/startGame";
+import { startPlay, cancelPlay } from "../redux/actions/startGame";
 import { useSelector, useDispatch } from "react-redux";
 
 function Lab1Form() {

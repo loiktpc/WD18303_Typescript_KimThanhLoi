@@ -1,0 +1,12 @@
+.boxForm {
+    text-align: center;
+    width: 300px;
+}
+.containerLab5 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.btnSubmit {
+    margin: 10px 0;
+}

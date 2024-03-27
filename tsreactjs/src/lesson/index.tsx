@@ -1,5 +1,3 @@
-import { log } from "console";
-
 // Declaration
 class FPT {
     public namestudent: string;

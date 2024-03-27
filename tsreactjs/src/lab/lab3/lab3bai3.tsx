@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import Col from "react-bootstrap/Col";
 import "./index.css";
-import Lab1Form from "../lab1/form";
+import Lab1Form from "../../component/form";
 
 interface obj {
     id: number;

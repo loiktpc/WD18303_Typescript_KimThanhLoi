@@ -2,7 +2,14 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
-
+.red {
+    background-color: red !important;
+    color: red !important;
+}
+.green {
+    background-color: greenyellow !important;
+    color: greenyellow !important;
+}
 .containerLab1 {
     margin-top: 15px;
 }
